@@ -2,28 +2,27 @@
 name: ChaosOS
 description: A custom image for ultimate Chaos
 
-base-image: ghcr.io/ublue-os/base-main
-image-version: 42
+base-image: docker.io/devuan/devuan
+image-version: stable
 
 modules:
-  - type: dnf
+  - type: apt
     install:
       packages:
-        # Install the full LXDE desktop environment group
-        #- "@lxde-desktop-environment"
-        - http://mirror.ppa.trinitydesktop.org/trinity/rpm/f42/trinity-r14/RPMS/noarch/trinity-repo-14.1.5-1.fc42.noarch.rpm
+        # Install the KDE metapackage 
+        #- "kde-standard"
         - pcmanfm-qt
         
         # Uncomment the line below and comment the lxde line above if you want to switch to XFCE:
         #- "@xfce-desktop-environment"
         
         # Keep these necessary non-DE specific packages:
-        - xorg-x11-server-Xwayland
-        - plymouth
-        - plymouth-theme-spinner
-        - systemd-udev
-        - network-manager-applet
-        - micro
+        - xterm
+        #- plymouth
+        #- plymouth-theme-spinner
+        - eudev
+        #- network-manager-applet
+        - nano
         #- lightdm
         #- lightdm-gtk-greeter
         
@@ -68,24 +67,6 @@ modules:
         - "@lxde-desktop-environment"
         - lightdm
         - lightdm-gtk-greeter
-        
-  - type: dnf
-    install:
-      packages:
-        - trinity-desktop
-
-  - type: default-flatpaks
-    configurations:
-      - scope: system
-        install:
-          #- io.gitlab.librewolf-community
-          - io.github.ungoogled_software.ungoogled_chromium
-          - org.libreoffice.LibreOffice
-          #- com.github.marhkb.Pods
-          - io.github.flattool.Warehouse
-          - org.gnome.Loupe
-          - com.vscodium.codium-insiders
-      - scope: user
 
   # Added the signing module here to ensure proper image signing
   - type: signing
