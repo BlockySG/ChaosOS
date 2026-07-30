@@ -3,7 +3,7 @@ name: ChaosOS
 description: A custom image for ultimate Chaos
 
 base-image: docker.io/devuan/devuan
-image-version: stable
+image-version: unstable
 
 modules:
   - type: apt
