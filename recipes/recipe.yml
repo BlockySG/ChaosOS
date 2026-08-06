@@ -2,7 +2,7 @@
 name: ChaosOS
 description: A custom image for ultimate Chaos
 
-base-image: docker.io/library/fedora
+base-image: quay.io/fedora/fedora
 image-version: 20
 
 modules:
